@@ -6,6 +6,7 @@ import UserLogin from './pages/UserLogin'
 import UserSignup from './pages/UserSignup'
 import UserHomePage from './pages/UserHomepage'
 import AdminPage from './pages/AdminHomePage'
+import CreateItemModal from './components/itemForm'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path='/signup' element={<UserSignup/>}></Route>
         <Route path='/user/home' element={<UserHomePage/>}></Route>
         <Route path='/admin/home' element={<AdminPage/>}></Route>
+        <Route path='/itemForm' element={<CreateItemModal/>}></Route>
       </Routes>
     </BrowserRouter>
   )
