@@ -4,19 +4,26 @@ import { Container, Button, TableHead, TableBody, AppBar, Toolbar, Typography } 
 import ItemsPage from './ItemPage';
 import axios from 'axios';
 import Item from '../Types/Item';
-import CreateItemModal from '../components/itemForm';
+import CreateItemForm from '../components/CreateItemForm';
 import ItemTable from '../components/ItemTable';
 
 
 const AdminHomepage: React.FC = () => {
 
     const [selectedButtonId, setSelectedButtonId] = useState<string | null>('item-button');
-
+    const [showCreateItemForm, setShowCreateItemForm] = useState(false);
 
     function handleButtonClick(event: any) {
         setSelectedButtonId(event.target.id)
     }
 
+    function handleCreateItemButtonClick() {
+        setShowCreateItemForm(true);
+    }
+
+    function handleCloseCreateItemForm() {
+        setShowCreateItemForm(false);
+    }
 
 
     return (
@@ -49,13 +56,26 @@ const AdminHomepage: React.FC = () => {
 
             {selectedButtonId === 'item-button' && (
                 <div>
-                    <ItemTable/>
+                    <ItemTable />
+
+                    <div className='w-full flex'>
+                        <div className='my-3 mx-4'>
+                            <button type='button' className="bg-slate-400 text-white rounded-lg py-2 px-4 hover:bg-slate-600" onClick={handleCreateItemButtonClick}>Create Item</button>
+                        </div>
+                        <div className='my-3'>
+                            <button type='button' className="bg-slate-400 text-white rounded-lg py-2 px-4 hover:bg-slate-600">Edit selected Item</button>
+                        </div>
+                    </div>
                 </div>
+
 
 
             )
 
             }
+            {showCreateItemForm && (
+                <CreateItemForm onClose={handleCloseCreateItemForm} />
+            )}
         </Container>
 
 

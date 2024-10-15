@@ -3,7 +3,7 @@ import CategoryType from "./CategoryType"
 interface Item{
     id:number,
     name:string,
-    description:String,
+    description:string,
     price:number,
     imageUrl:string,
     category: CategoryType

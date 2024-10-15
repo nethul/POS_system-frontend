@@ -14,7 +14,7 @@ function ItemTable(){
 
     useEffect(() => {
         if(!isLoaded){
-            loadItems
+            loadItems()
         }
     }, [isLoaded])
 
@@ -39,7 +39,7 @@ function ItemTable(){
                         Price
                     </th>
                     <th scope="col" className="px-6 py-3">
-                        Image URL
+                        Image
                     </th >
                     <th scope="col" className="px-6 py-3">
                         Category
@@ -48,26 +48,19 @@ function ItemTable(){
             </thead>
             <tbody>
                 {items.map((item)=>(
-                    <tr>
+                    <tr >
                         <td>{item.id}</td>
                         <td>{item.name}</td>
                         <td>{item.description}</td>
                         <td>{item.price}</td>
-                        <td>{item.imageUrl}</td>
-                        <td>{item.category.name}</td>
+                        <td><img src={item.imageUrl} alt={item.name}></img></td>
+                        <td>{item.category ? item.category.name : "N/A"}</td>
                     </tr>
                 ))}
             </tbody>
         </table>
 
-        <div className='w-full flex'>
-            <div className='my-3 mx-4'>
-                <button type='button' className="bg-slate-400 text-white rounded-lg py-2 px-4 hover:bg-slate-600">Create Item</button>
-            </div>
-            <div className='my-3'>
-                <button type='button' className="bg-slate-400 text-white rounded-lg py-2 px-4 hover:bg-slate-600">Edit selected Item</button>
-            </div>
-        </div>
+       
 
     </div>
     )
