@@ -2,7 +2,8 @@ import Item from "./Item"
 
 interface CategoryType{
     id:number,
-    name:string
+    name:string,
+    items:Item[]
 }
 
 export default CategoryType

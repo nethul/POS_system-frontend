@@ -1,7 +1,7 @@
 interface UserType{
    id : number,
    fullName : string,
-   birthDate : Date,
+   birthDate : Date | null,
    gender : string,
    address : string, 
    mobileNumber : number,

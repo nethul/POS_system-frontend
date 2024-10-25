@@ -4,8 +4,10 @@ import { Container, Button, TableHead, TableBody, AppBar, Toolbar, Typography } 
 import ItemsPage from './ItemPage';
 import axios from 'axios';
 import Item from '../Types/Item';
-import CreateItemForm from '../components/CreateItemForm';
-import ItemTable from '../components/ItemTable';
+import ItemTable from '../components/ItemModel';
+import CategoryModel from '../components/CategoryModel';
+import UserModel from '../components/UserModel';
+import ItemModel from '../components/ItemModel';
 
 
 const AdminHomepage: React.FC = () => {
@@ -38,14 +40,17 @@ const AdminHomepage: React.FC = () => {
                     </Typography>
                     <div className="flex-grow"></div>
                     <div className="flex space-x-4">
+                        <Button id='user-button' onClick={handleButtonClick} color="inherit">
+                            Users
+                        </Button>
+                        <Button id='category-button' onClick={handleButtonClick} color="inherit">
+                            Categories
+                        </Button>
                         <Button id='item-button' onClick={handleButtonClick} color="inherit">
                             Items
                         </Button>
                         <Button id='stock-button' onClick={handleButtonClick} color="inherit">
                             Stock
-                        </Button>
-                        <Button id='user-button' onClick={handleButtonClick} color="inherit">
-                            Users
                         </Button>
                         <Button id='order-button' onClick={handleButtonClick} color="inherit">
                             Orders
@@ -56,25 +61,21 @@ const AdminHomepage: React.FC = () => {
 
             {selectedButtonId === 'item-button' && (
                 <div>
-                    <ItemTable />
-
-                    <div className='w-full flex'>
-                        <div className='my-3 mx-4'>
-                            <button type='button' className="bg-slate-400 text-white rounded-lg py-2 px-4 hover:bg-slate-600" onClick={handleCreateItemButtonClick}>Create Item</button>
-                        </div>
-                        <div className='my-3'>
-                            <button type='button' className="bg-slate-400 text-white rounded-lg py-2 px-4 hover:bg-slate-600">Edit selected Item</button>
-                        </div>
-                    </div>
+                    <ItemModel/>
                 </div>
+            )}
+            
 
+            {selectedButtonId === 'category-button' && (
+                <div>
+                    <CategoryModel/>
+                </div>
+            )}
 
-
-            )
-
-            }
-            {showCreateItemForm && (
-                <CreateItemForm onClose={handleCloseCreateItemForm} />
+            {selectedButtonId === 'user-button' && (
+                <div>
+                    <UserModel/>
+                </div>
             )}
         </Container>
 
